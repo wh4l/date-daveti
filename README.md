@@ -4,7 +4,7 @@ Canlı site: https://wh4l.github.io/date-daveti/
 
 GitHub deposu: https://github.com/wh4l/date-daveti
 
-Siteyi istediğin kişiye canlı site bağlantısıyla gönderebilirsin. Davetlinin seçtiği etkinlik, tarih, saat ve varsa ad, Google E-Tablo'daki **Yanıtlar** sekmesine kaydedilir. Tablo yalnızca senin Google hesabında bulunur; paylaşım ayarlarını değiştirmedik.
+Siteyi istediğin kişiye canlı site bağlantısıyla gönderebilirsin. Davetlinin seçtiği etkinlik, tarih, saat ve varsa etkinliğe özel isteği, Google E-Tablo'daki **Yanıtlar** sekmesine kaydedilir. İstek alanı boşsa tabloya "Seçim bana bırakıldı" yazılır. Tablo yalnızca senin Google hesabında bulunur; paylaşım ayarlarını değiştirmedik.
 
 ## Siteyi sonradan düzenleme
 
