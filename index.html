@@ -7,9 +7,9 @@
     <meta name="description" content="Küçük bir soru, tatlı bir buluşma planı." />
     <title>Bir küçük soru ♡</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=2" />
     <script src="config.js?v=2" defer></script>
-    <script src="app.js" defer></script>
+    <script src="app.js?v=2" defer></script>
   </head>
   <body>
     <canvas id="confetti" aria-hidden="true"></canvas>
@@ -34,7 +34,7 @@
             <span class="illustration-heart">♥</span>
             <span class="illustration-orbit orbit-c">✦</span>
           </div>
-          <h1 id="main-question">Kalbim biraz cesaret topladı: benimle bir date’e çıkar mısın?</h1>
+          <h1 id="main-question">Benimle date’e çıkar mısın?</h1>
           <p class="supporting">Cevabını merakla bekliyorum…</p>
 
           <div class="answer-arena" id="answer-arena">
@@ -64,8 +64,9 @@
           <h2 id="schedule-title">O zaman, ne zaman buluşuyoruz?</h2>
           <p class="supporting">Takvimde bize güzel bir yer ayıralım.</p>
           <form id="schedule-form" class="schedule-form">
-            <label for="guest-name">Adın <span class="optional">(istersen)</span></label>
-            <input id="guest-name" name="guestName" type="text" maxlength="40" autocomplete="given-name" placeholder="Davetiyeye yazalım" />
+            <label for="activity-request"><span id="request-label">Etkinlikle ilgili özel bir isteğin var mı?</span> <span class="optional">(isteğe bağlı)</span></label>
+            <input id="activity-request" name="activityRequest" type="text" maxlength="80" autocomplete="off" placeholder="Aklındaki fikri yazabilirsin" />
+            <p class="form-hint">Boş bırakırsan seçimi bana bırakmış olursun.</p>
             <div class="form-row">
               <div>
                 <label for="date-input">Tarih</label>
@@ -99,6 +100,7 @@
                 <div><dt>Planımız</dt><dd id="card-activity"></dd></div>
                 <div><dt>Tarih</dt><dd id="card-date"></dd></div>
                 <div><dt>Saat</dt><dd id="card-time"></dd></div>
+                <div><dt>Özel istek</dt><dd id="card-request"></dd></div>
               </dl>
               <p class="card-signature">Görüşmek için sabırsızlanıyorum! ♡</p>
             </article>
@@ -115,7 +117,6 @@
 
         <footer class="panel-footer"><span>made with a little courage</span><span aria-hidden="true">♡</span></footer>
       </section>
-      <p class="outside-note">Küçük bir “evet” bazen çok güzel bir hikâyenin başlangıcıdır.</p>
     </main>
   </body>
 </html>
