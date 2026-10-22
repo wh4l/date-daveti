@@ -7,6 +7,12 @@
     'gol-yuruyusu': 'Göl yürüyüşü',
     sinema: 'Sinema'
   });
+  const requestPrompts = Object.freeze({
+    yemek: { label: 'Yemek için özel bir isteğin var mı?', placeholder: 'Mutfak, restoran veya başka bir fikir' },
+    kahve: { label: 'Kahve için aklında bir yer veya içecek var mı?', placeholder: 'Mekân veya içecek önerin' },
+    'gol-yuruyusu': { label: 'Göl yürüyüşü için aklında bir yer var mı?', placeholder: 'Aklındaki göl ya da rota' },
+    sinema: { label: 'İzlemek istediğin bir film var mı?', placeholder: 'Film adını yazabilirsin' }
+  });
   const steps = ['ask', 'activity', 'schedule', 'card'];
   const stepElements = Object.fromEntries(steps.map(key => [key, document.getElementById(`step-${key}`)]));
   const yesButton = document.getElementById('yes-button');
@@ -15,12 +21,13 @@
   const form = document.getElementById('schedule-form');
   const dateInput = document.getElementById('date-input');
   const timeInput = document.getElementById('time-input');
-  const nameInput = document.getElementById('guest-name');
+  const requestInput = document.getElementById('activity-request');
+  const requestLabel = document.getElementById('request-label');
   const errorBox = document.getElementById('form-error');
   const deliveryStatus = document.getElementById('delivery-status');
   const envelope = document.querySelector('.envelope-scene');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const state = { activity: null, date: '', time: '', name: '', id: createId(), noMoves: 0 };
+  const state = { activity: null, date: '', time: '', request: '', id: createId(), noMoves: 0 };
 
   function createId() {
     return typeof crypto !== 'undefined' && crypto.randomUUID
@@ -33,6 +40,13 @@
     return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
   }
 
+  function updateRequestPrompt() {
+    const prompt = requestPrompts[state.activity];
+    if (!prompt) return;
+    requestLabel.textContent = prompt.label;
+    requestInput.placeholder = prompt.placeholder;
+  }
+
   function showStep(key) {
     for (const step of steps) {
       const active = step === key;
@@ -41,6 +55,7 @@
     }
     if (key !== 'ask') resetNoButton();
     if (key === 'schedule') {
+      updateRequestPrompt();
       dateInput.min = localToday();
       window.setTimeout(() => dateInput.focus({ preventScroll: true }), 100);
     }
@@ -114,6 +129,7 @@
 
   document.querySelectorAll('[data-activity]').forEach(button => {
     button.addEventListener('click', () => {
+      if (state.activity !== button.dataset.activity) requestInput.value = '';
       state.activity = button.dataset.activity;
       showStep('schedule');
     });
@@ -139,7 +155,7 @@
 
     state.date = selectedDate;
     state.time = selectedTime;
-    state.name = nameInput.value.trim().slice(0, 40);
+    state.request = requestInput.value.trim().slice(0, 80);
     fillCard();
     showStep('card');
     envelope.classList.remove('is-open');
@@ -159,10 +175,11 @@
   }
 
   function fillCard() {
-    document.getElementById('card-greeting').textContent = state.name ? `${state.name}, seninle bir gün…` : 'Seninle bir gün…';
+    document.getElementById('card-greeting').textContent = 'Seninle bir gün…';
     document.getElementById('card-activity').textContent = activities[state.activity];
     document.getElementById('card-date').textContent = formattedDate();
     document.getElementById('card-time').textContent = state.time;
+    document.getElementById('card-request').textContent = state.request || 'Sürpriz olsun ♡';
   }
 
   function setDelivery(message, kind = '') {
@@ -183,7 +200,7 @@
       activity: state.activity,
       date: state.date,
       time: state.time,
-      name: state.name,
+      request: state.request,
       submittedAt: new Date().toISOString()
     });
     try {
@@ -196,7 +213,7 @@
   }
 
   document.getElementById('copy-button').addEventListener('click', async () => {
-    const details = `Buluşma davetiyesi ♡\n${state.name ? `Ad: ${state.name}\n` : ''}Plan: ${activities[state.activity]}\nTarih: ${formattedDate()}\nSaat: ${state.time}`;
+    const details = `Buluşma davetiyesi ♡\nPlan: ${activities[state.activity]}\nTarih: ${formattedDate()}\nSaat: ${state.time}\nÖzel istek: ${state.request || 'Sürpriz olsun'}`;
     try {
       await navigator.clipboard.writeText(details);
       document.getElementById('copy-button').textContent = 'Kopyalandı! ✓';
