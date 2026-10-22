@@ -3,7 +3,7 @@
  * Bu dosya GitHub Pages tarafından çalıştırılmaz; kodu Google'da dağıtmanız gerekir.
  */
 const SHEET_NAME = 'Yanıtlar';
-const HEADERS = ['Davet ID', 'Kayıt zamanı', 'Ad', 'Etkinlik', 'Tarih', 'Saat'];
+const HEADERS = ['Davet ID', 'Kayıt zamanı', 'Özel istek', 'Etkinlik', 'Tarih', 'Saat'];
 const ACTIVITY_LABELS = {
   yemek: 'Yemek',
   kahve: 'Kahve',
@@ -22,7 +22,7 @@ function doPost(e) {
     const activity = String(p.activity || '').trim();
     const date = String(p.date || '').trim();
     const time = String(p.time || '').trim();
-    const name = String(p.name || '').trim().slice(0, 40);
+    const request = String(p.request || '').trim().slice(0, 80);
 
     if (!/^[a-zA-Z0-9-]{8,100}$/.test(id) ||
         !Object.prototype.hasOwnProperty.call(ACTIVITY_LABELS, activity) ||
@@ -37,7 +37,8 @@ function doPost(e) {
       const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
       const sheet = spreadsheet.getSheetByName(SHEET_NAME) || spreadsheet.insertSheet(SHEET_NAME);
       if (sheet.getLastRow() === 0) sheet.appendRow(HEADERS);
-      const row = [id, new Date(), safeText(name), ACTIVITY_LABELS[activity], date, time];
+      else if (sheet.getRange(1, 3).getValue() !== HEADERS[2]) sheet.getRange(1, 3).setValue(HEADERS[2]);
+      const row = [id, new Date(), safeText(request || 'Seçim bana bırakıldı'), ACTIVITY_LABELS[activity], date, time];
       const count = sheet.getLastRow() - 1;
       const ids = count > 0 ? sheet.getRange(2, 1, count, 1).getValues().flat() : [];
       const match = ids.findIndex(existing => String(existing) === id);
