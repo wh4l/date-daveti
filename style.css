@@ -49,7 +49,6 @@ h2 { margin: 9px auto 7px; font-size: clamp(31px, 5vw, 43px); line-height: 1.17;
 .little-note { margin: -2px 0 0; color: #ae9090; font-size: 12px; letter-spacing: .01em; }
 .panel-footer { border-top: 1px solid #f1e5dd; padding: 17px 43px 19px; color: #b3948f; font-family: Georgia, serif; font-size: 13px; font-style: italic; }
 .panel-footer span:last-child { font-size: 18px; color: #d98c97; }
-.outside-note { margin: 21px 0 0; position: relative; z-index: 1; color: #9e7775; text-align: center; font-family: Georgia, serif; font-size: 14px; font-style: italic; }
 .sparkle, .heart-doodle { position: absolute; z-index: 0; pointer-events: none; color: #d18b8c; }
 .sparkle-one { top: 13%; left: calc(50% - 420px); font-size: 39px; transform: rotate(18deg); }
 .sparkle-two { bottom: 14%; right: calc(50% - 415px); font-size: 27px; }
@@ -69,15 +68,16 @@ h2 { margin: 9px auto 7px; font-size: clamp(31px, 5vw, 43px); line-height: 1.17;
 .optional { color: #aa8983; font-weight: 400; }
 .schedule-form input { display: block; width: 100%; height: 53px; border: 1px solid #e6c9c4; border-radius: 12px; background: #fffefa; padding: 12px 15px; color: var(--ink); }
 .schedule-form input::placeholder { color: #baa5a0; }
+.form-hint { margin: 8px 0 0; color: #a1847e; font-size: 12px; line-height: 1.45; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 17px; }
 .form-error { margin: 13px 0 0; color: #ae304a; font-size: 13px; }
 .button-wide { display: block; width: 100%; margin-top: 22px; }
 
 .card-heading { font-size: clamp(29px, 5vw, 40px); }
-.envelope-scene { width: min(100%, 410px); height: 430px; margin: 78px auto 0; position: relative; perspective: 1000px; }
+.envelope-scene { width: min(100%, 410px); height: 465px; margin: 78px auto 0; position: relative; perspective: 1000px; }
 .envelope-shadow { position: absolute; width: 86%; height: 24px; bottom: 17px; left: 7%; border-radius: 50%; background: rgba(99, 55, 60, .15); filter: blur(12px); }
 .envelope-back { position: absolute; width: 100%; height: 185px; bottom: 31px; left: 0; border-radius: 10px; background: #d9929d; box-shadow: 0 20px 35px rgba(127,75,80,.17); }
-.invitation-card { position: absolute; z-index: 2; width: 82%; min-height: 285px; left: 9%; top: 35px; padding: 15px 22px 17px; border: 1px solid #ecdcd0; background: #fffdf6; box-shadow: 0 10px 23px rgba(86,59,51,.16); text-align: center; transform: translateY(145px) scale(.96); opacity: 0; }
+.invitation-card { position: absolute; z-index: 2; width: 82%; min-height: 305px; left: 9%; top: 35px; padding: 15px 22px 17px; border: 1px solid #ecdcd0; background: #fffdf6; box-shadow: 0 10px 23px rgba(86,59,51,.16); text-align: center; transform: translateY(145px) scale(.96); opacity: 0; }
 .envelope-scene.is-open .invitation-card { animation: cardRise 1.08s .48s cubic-bezier(.2,.8,.28,1) forwards; }
 .card-overline { font-size: 9px; color: #aa7973; }
 .card-heart { margin: 3px 0 3px; color: #cc6979; font-size: 26px; }
@@ -85,9 +85,9 @@ h2 { margin: 9px auto 7px; font-size: clamp(31px, 5vw, 43px); line-height: 1.17;
 .invitation-card h3 { margin: 7px 0 11px; font-size: 24px; line-height: 1.1; }
 .card-rule { height: 1px; width: 65%; margin: 0 auto 12px; background: #e5c5bf; }
 .invitation-card dl { margin: 0; }
-.invitation-card dl div { display: flex; align-items: baseline; justify-content: space-between; gap: 13px; padding: 5px 0; border-bottom: 1px dotted #ead8d0; }
+.invitation-card dl div { display: flex; align-items: flex-start; justify-content: space-between; gap: 13px; padding: 5px 0; border-bottom: 1px dotted #ead8d0; }
 .invitation-card dt { color: #9a7872; font-size: 11px; text-align: left; }
-.invitation-card dd { margin: 0; font-family: Georgia, serif; font-size: 13px; text-align: right; }
+.invitation-card dd { max-width: 70%; margin: 0; font-family: Georgia, serif; font-size: 13px; text-align: right; overflow-wrap: anywhere; }
 .card-signature { margin: 12px 0 0; color: #ad6975; font-family: Georgia, serif; font-style: italic; font-size: 12px; }
 .envelope-front { position: absolute; z-index: 3; width: 100%; height: 185px; left: 0; bottom: 31px; background: #e6aab0; clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%); border-radius: 0 0 10px 10px; pointer-events: none; }
 .envelope-front::after { content: ''; position: absolute; inset: 0; background: #e9adb4; clip-path: polygon(0 100%, 49% 50%, 100% 100%); }
@@ -122,7 +122,7 @@ h2 { margin: 9px auto 7px; font-size: clamp(31px, 5vw, 43px); line-height: 1.17;
   .panel-footer { padding: 13px 26px 16px; }
   .activity-grid { gap: 9px; }
   .activity-card { min-height: 125px; padding: 13px; font-size: 15px; }
-  .envelope-scene { height: 420px; margin-top: 72px; }
+  .envelope-scene { height: 455px; margin-top: 72px; }
   .sparkle, .heart-doodle { display: none; }
 }
 @media (max-width: 390px) {
