@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f9eee8" />
+    <meta name="description" content="Küçük bir soru, tatlı bir buluşma planı." />
+    <title>Bir küçük soru ♡</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <main class="page-shell">
+      <div class="sparkle sparkle-one" aria-hidden="true">✳</div>
+      <div class="sparkle sparkle-two" aria-hidden="true">✦</div>
+      <div class="heart-doodle" aria-hidden="true">♡</div>
+
+      <section class="invite-panel" aria-label="Buluşma daveti">
+        <header class="panel-header">
+          <span class="eyebrow">Sana küçük bir sorum var</span>
+          <span class="tiny-heart" aria-hidden="true">♥</span>
+        </header>
+
+        <section id="step-ask" class="step is-active" aria-labelledby="main-question">
+          <div class="illustration" aria-hidden="true">
+            <span class="illustration-orbit orbit-a">✦</span>
+            <span class="illustration-orbit orbit-b">✧</span>
+            <span class="illustration-heart">♥</span>
+            <span class="illustration-orbit orbit-c">✦</span>
+          </div>
+          <h1 id="main-question">Kalbim biraz cesaret topladı: benimle bir date’e çıkar mısın?</h1>
+          <p class="supporting">Cevabını merakla bekliyorum…</p>
+
+          <div class="answer-arena" id="answer-arena">
+            <button class="button button-primary" id="yes-button" type="button">Evet, çıkarım! <span aria-hidden="true">♡</span></button>
+            <button class="button button-no" id="no-button" type="button">Hayır</button>
+          </div>
+          <p class="little-note">İpucu: doğru cevap kalbini dinlediğinde belli olur.</p>
+        </section>
+
+        <section id="step-activity" class="step" aria-labelledby="activity-title" hidden>
+          <div class="step-marker">01 / 02 · planımız</div>
+          <div class="mini-illustration" aria-hidden="true">♥</div>
+          <h2 id="activity-title">Harika! Peki ne yapalım?</h2>
+          <p class="supporting">İlk buluşmamızın havasını sen seç.</p>
+          <div class="activity-grid" role="group" aria-label="Etkinlik seçimi">
+            <button class="activity-card" type="button" data-activity="yemek"><span class="activity-icon" aria-hidden="true">🍝</span><span>Yemek</span><small>Uzun uzun sohbet</small></button>
+            <button class="activity-card" type="button" data-activity="kahve"><span class="activity-icon" aria-hidden="true">☕</span><span>Kahve</span><small>Bir fincan mutluluk</small></button>
+            <button class="activity-card" type="button" data-activity="gol-yuruyusu"><span class="activity-icon" aria-hidden="true">🌿</span><span>Göl yürüyüşü</span><small>Yan yana, acele etmeden</small></button>
+            <button class="activity-card" type="button" data-activity="sinema"><span class="activity-icon" aria-hidden="true">🎬</span><span>Sinema</span><small>Patlamış mısır paylaşırız</small></button>
+          </div>
+          <button class="text-button" id="back-to-ask" type="button">← Bir önceki adıma dön</button>
+        </section>
+
+        <section id="step-schedule" class="step" aria-labelledby="schedule-title" hidden>
+          <div class="step-marker">02 / 02 · zamanımız</div>
+          <div class="mini-illustration" aria-hidden="true">✦</div>
+          <h2 id="schedule-title">O zaman, ne zaman buluşuyoruz?</h2>
+          <p class="supporting">Takvimde bize güzel bir yer ayıralım.</p>
+          <form id="schedule-form" class="schedule-form">
+            <label for="guest-name">Adın <span class="optional">(istersen)</span></label>
+            <input id="guest-name" name="guestName" type="text" maxlength="40" autocomplete="given-name" placeholder="Davetiyeye yazalım" />
+            <div class="form-row">
+              <div>
+                <label for="date-input">Tarih</label>
+                <input id="date-input" name="date" type="date" required />
+              </div>
+              <div>
+                <label for="time-input">Saat</label>
+                <input id="time-input" name="time" type="time" required />
+              </div>
+            </div>
+            <p id="form-error" class="form-error" role="alert" hidden></p>
+            <button class="button button-primary button-wide" type="submit">Davetiyemizi hazırla <span aria-hidden="true">✦</span></button>
+          </form>
+          <button class="text-button" id="back-to-activity" type="button">← Etkinliği değiştir</button>
+        </section>
+
+        <section id="step-card" class="step" aria-labelledby="card-title" hidden>
+          <div class="step-marker">Birlikte güzel bir gün olsun</div>
+          <h2 id="card-title" class="card-heading">Bu davetiye sana özel ♡</h2>
+          <p class="supporting">Zarfı aç, planımıza bir bak.</p>
+          <div class="envelope-scene">
+            <div class="envelope-shadow" aria-hidden="true"></div>
+            <div class="envelope-back" aria-hidden="true"></div>
+            <article class="invitation-card" aria-label="Buluşma davetiyesi">
+              <span class="card-overline">YOU & ME</span>
+              <div class="card-heart" aria-hidden="true">♥</div>
+              <p class="card-kicker">Bir buluşma davetiyesi</p>
+              <h3 id="card-greeting">Seninle bir gün…</h3>
+              <div class="card-rule"></div>
+              <dl>
+                <div><dt>Planımız</dt><dd id="card-activity"></dd></div>
+                <div><dt>Tarih</dt><dd id="card-date"></dd></div>
+                <div><dt>Saat</dt><dd id="card-time"></dd></div>
+              </dl>
+              <p class="card-signature">Görüşmek için sabırsızlanıyorum! ♡</p>
+            </article>
+            <div class="envelope-front" aria-hidden="true"></div>
+            <div class="envelope-flap" aria-hidden="true"></div>
+            <div class="envelope-seal" aria-hidden="true">♥</div>
+          </div>
+          <p id="delivery-status" class="delivery-status" role="status" aria-live="polite"></p>
+          <div class="card-actions">
+            <button class="button button-outline" id="copy-button" type="button">Planı kopyala</button>
+            <button class="text-button" id="edit-button" type="button">Tarih veya saati değiştir</button>
+          </div>
+        </section>
+
+        <footer class="panel-footer"><span>made with a little courage</span><span aria-hidden="true">♡</span></footer>
+      </section>
+      <p class="outside-note">Küçük bir “evet” bazen çok güzel bir hikâyenin başlangıcıdır.</p>
+    </main>
+  </body>
+</html>
