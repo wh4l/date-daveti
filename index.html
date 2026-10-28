@@ -7,10 +7,10 @@
     <meta name="description" content="Küçük bir soru, tatlı bir buluşma planı." />
     <title>Bir küçük soru ♡</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="style.css?v=3" />
+    <link rel="stylesheet" href="style.css?v=4" />
     <script src="config.js?v=2" defer></script>
     <script src="app.js?v=2" defer></script>
-    <script src="bouquet.js?v=4" defer></script>
+    <script src="bouquet.js?v=5" defer></script>
   </head>
   <body>
     <canvas id="confetti" aria-hidden="true"></canvas>
@@ -56,6 +56,7 @@
             <button class="activity-card" type="button" data-activity="gol-yuruyusu"><span class="activity-icon" aria-hidden="true">🌿</span><span>Göl yürüyüşü</span><small>Yan yana, acele etmeden</small></button>
             <button class="activity-card" type="button" data-activity="sinema"><span class="activity-icon" aria-hidden="true">🎬</span><span>Sinema</span><small>Patlamış mısır paylaşırız</small></button>
           </div>
+          <button class="button button-outline bouquet-preview" data-bouquet-open type="button">Çiçekleri aç ✿</button>
           <button class="text-button" id="back-to-ask" type="button">← Bir önceki adıma dön</button>
         </section>
 
@@ -111,7 +112,7 @@
           </div>
           <p id="delivery-status" class="delivery-status" role="status" aria-live="polite"></p>
           <div class="card-actions">
-            <button class="button button-outline" id="bouquet-open" type="button">Sana bir buket ♡</button>
+            <button class="button button-outline" id="bouquet-open" data-bouquet-open type="button">Sana bir buket ♡</button>
             <button class="button button-outline" id="copy-button" type="button">Planı kopyala</button>
             <button class="text-button" id="edit-button" type="button">Tarih veya saati değiştir</button>
           </div>
@@ -126,7 +127,7 @@
       <section class="bouquet-dialog" role="dialog" aria-modal="true" aria-labelledby="bouquet-title" tabindex="-1">
         <button class="bouquet-close" id="bouquet-close" type="button" aria-label="Çiçek penceresini kapat">×</button>
         <p class="bouquet-eyebrow">SANA KÜÇÜK BİR SÜRPRİZ</p>
-        <h2 id="bouquet-title">Sana bir buket kodladım.</h2>
+        <h2 id="bouquet-title">Sana bir buket getirdim.</h2>
         <canvas class="bouquet-art" id="bouquet-art" width="480" height="560" role="img" aria-label="Renkli zambaklardan oluşan hareketli ASCII buketi"></canvas>
         <p class="bouquet-signature">Bu çiçekler sana ♡</p>
         <button class="bouquet-replay" id="bouquet-replay" type="button">Yeniden izle ↻</button>

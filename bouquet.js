@@ -2,12 +2,12 @@
   'use strict';
 
   const overlay = document.getElementById('bouquet-overlay');
-  const openButton = document.getElementById('bouquet-open');
+  const openButtons = document.querySelectorAll('[data-bouquet-open]');
   const closeButton = document.getElementById('bouquet-close');
   const replayButton = document.getElementById('bouquet-replay');
   const canvas = document.getElementById('bouquet-art');
   const context = canvas && canvas.getContext('2d');
-  if (!overlay || !openButton || !closeButton || !replayButton || !context) return;
+  if (!overlay || !openButtons.length || !closeButton || !replayButton || !context) return;
 
   const width = canvas.width;
   const height = canvas.height;
@@ -187,7 +187,7 @@
 
   source.addEventListener('load', buildGlyphs);
   source.addEventListener('error', () => { failed = true; if (!overlay.hidden) play(); });
-  openButton.addEventListener('click', open);
+  openButtons.forEach(button => button.addEventListener('click', open));
   closeButton.addEventListener('click', close);
   replayButton.addEventListener('click', play);
   document.getElementById('bouquet-backdrop').addEventListener('click', close);

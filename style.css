@@ -100,6 +100,7 @@ h2 { margin: 9px auto 7px; font-size: clamp(31px, 5vw, 43px); line-height: 1.17;
 .delivery-status.success { color: #597c61; }
 .card-actions { display: flex; align-items: center; justify-content: center; gap: 13px; flex-wrap: wrap; margin: 15px auto 0; }
 .button-outline { min-height: 42px; padding: 9px 18px; border: 1px solid #dca4a9; background: #fffaf7; color: #a55765; font-size: 13px; }
+.bouquet-preview { display: block; margin: 0 auto 4px; }
 
 body.bouquet-visible { overflow: hidden; }
 .bouquet-overlay { position: fixed; z-index: 110; inset: 0; display: grid; place-items: center; padding: 18px; }

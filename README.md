@@ -6,6 +6,8 @@ GitHub deposu: https://github.com/wh4l/date-daveti
 
 Siteyi istediğin kişiye canlı site bağlantısıyla gönderebilirsin. Davetlinin seçtiği etkinlik, tarih, saat ve varsa etkinliğe özel isteği, Google E-Tablo'daki **Yanıtlar** sekmesine kaydedilir. İstek alanı boşsa tabloya "Seçim bana bırakıldı" yazılır. Tablo yalnızca senin Google hesabında bulunur; paylaşım ayarlarını değiştirmedik.
 
+"Evet" yanıtından sonra **Çiçekleri aç** düğmesi, hareketli ASCII zambak buketini sitenin içinde ayrı bir pencerede gösterir. Buketi açmak tabloya kayıt göndermez; aynı pencere davetiye kartından tekrar açılabilir.
+
 ## Siteyi sonradan düzenleme
 
 Masaüstündeki bu klasör kaynak dosyaların bir kopyasıdır. Burada yaptığın değişiklikler GitHub'a otomatik gitmez. Tarayıcı üzerinden güncellemek için GitHub deposunda ilgili dosyayı aç, kalem simgesiyle düzenle ve **Commit changes** seç. Dosyayı bilgisayardan yükleyeceksen depodaki **Add file → Upload files** yolunu kullan. GitHub Pages, `main` dalının kök klasöründen otomatik yayın yapar.
