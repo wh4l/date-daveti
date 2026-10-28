@@ -101,6 +101,21 @@ h2 { margin: 9px auto 7px; font-size: clamp(31px, 5vw, 43px); line-height: 1.17;
 .card-actions { display: flex; align-items: center; justify-content: center; gap: 13px; flex-wrap: wrap; margin: 15px auto 0; }
 .button-outline { min-height: 42px; padding: 9px 18px; border: 1px solid #dca4a9; background: #fffaf7; color: #a55765; font-size: 13px; }
 
+body.bouquet-visible { overflow: hidden; }
+.bouquet-overlay { position: fixed; z-index: 110; inset: 0; display: grid; place-items: center; padding: 18px; }
+.bouquet-backdrop { position: absolute; inset: 0; background: rgba(20, 12, 22, .78); backdrop-filter: blur(9px); }
+.bouquet-dialog { position: relative; width: min(100%, 620px); max-height: min(94dvh, 820px); overflow: auto; padding: 27px 28px 24px; border: 1px solid #49404a; border-radius: 25px; background: radial-gradient(circle at 50% 39%, #17141d, #08090e 70%); box-shadow: 0 30px 90px rgba(0, 0, 0, .5); color: #eee9d2; text-align: center; animation: fadeUp .35s both; }
+.bouquet-dialog::before { content: ''; position: absolute; inset: 8px; border: 1px solid rgba(247, 226, 183, .12); border-radius: 18px; pointer-events: none; }
+.bouquet-close { position: absolute; z-index: 2; right: 18px; top: 15px; width: 36px; height: 36px; border: 1px solid rgba(248, 232, 197, .25); border-radius: 50%; background: rgba(255, 255, 255, .06); color: #f4e9ce; font-size: 25px; line-height: 1; }
+.bouquet-close:hover { background: rgba(255, 255, 255, .16); }
+.bouquet-eyebrow { margin: 5px 38px 9px; color: #caaa96; font-size: 10px; font-weight: 800; letter-spacing: .23em; }
+.bouquet-dialog h2 { margin: 0 35px 3px; color: #f7f0cc; font: italic clamp(29px, 5vw, 44px)/1.1 Georgia, 'Times New Roman', serif; }
+.bouquet-art { display: block; width: min(100%, 480px); height: auto; margin: 0 auto; aspect-ratio: 6 / 7; }
+.bouquet-signature { margin: -7px 0 9px; color: #ead5c5; font: italic 16px Georgia, serif; }
+.bouquet-replay { border: 0; background: transparent; color: #eac4a3; font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
+.bouquet-replay:hover { color: #fff1d3; }
+.bouquet-dialog button:focus-visible { outline-color: #f7d5aa; }
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes heartbeat { 0%, 100% { transform: rotate(-10deg) scale(1); } 12% { transform: rotate(-10deg) scale(1.08); } 24% { transform: rotate(-10deg) scale(1); } }
 @keyframes flapOpen { to { transform: rotateX(180deg); z-index: 1; } }
@@ -124,6 +139,10 @@ h2 { margin: 9px auto 7px; font-size: clamp(31px, 5vw, 43px); line-height: 1.17;
   .activity-card { min-height: 125px; padding: 13px; font-size: 15px; }
   .envelope-scene { height: 455px; margin-top: 72px; }
   .sparkle, .heart-doodle { display: none; }
+  .bouquet-overlay { padding: 10px; }
+  .bouquet-dialog { padding: 22px 12px 20px; border-radius: 18px; }
+  .bouquet-dialog h2 { margin: 0 27px; }
+  .bouquet-close { right: 11px; top: 10px; }
 }
 @media (max-width: 390px) {
   .eyebrow { font-size: 9px; }

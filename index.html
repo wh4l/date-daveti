@@ -7,9 +7,10 @@
     <meta name="description" content="Küçük bir soru, tatlı bir buluşma planı." />
     <title>Bir küçük soru ♡</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="style.css?v=2" />
+    <link rel="stylesheet" href="style.css?v=3" />
     <script src="config.js?v=2" defer></script>
     <script src="app.js?v=2" defer></script>
+    <script src="bouquet.js?v=4" defer></script>
   </head>
   <body>
     <canvas id="confetti" aria-hidden="true"></canvas>
@@ -110,6 +111,7 @@
           </div>
           <p id="delivery-status" class="delivery-status" role="status" aria-live="polite"></p>
           <div class="card-actions">
+            <button class="button button-outline" id="bouquet-open" type="button">Sana bir buket ♡</button>
             <button class="button button-outline" id="copy-button" type="button">Planı kopyala</button>
             <button class="text-button" id="edit-button" type="button">Tarih veya saati değiştir</button>
           </div>
@@ -118,5 +120,17 @@
         <footer class="panel-footer"><span>made with a little courage</span><span aria-hidden="true">♡</span></footer>
       </section>
     </main>
+
+    <div class="bouquet-overlay" id="bouquet-overlay" hidden>
+      <div class="bouquet-backdrop" id="bouquet-backdrop"></div>
+      <section class="bouquet-dialog" role="dialog" aria-modal="true" aria-labelledby="bouquet-title" tabindex="-1">
+        <button class="bouquet-close" id="bouquet-close" type="button" aria-label="Çiçek penceresini kapat">×</button>
+        <p class="bouquet-eyebrow">SANA KÜÇÜK BİR SÜRPRİZ</p>
+        <h2 id="bouquet-title">Sana bir buket kodladım.</h2>
+        <canvas class="bouquet-art" id="bouquet-art" width="480" height="560" role="img" aria-label="Renkli zambaklardan oluşan hareketli ASCII buketi"></canvas>
+        <p class="bouquet-signature">Bu çiçekler sana ♡</p>
+        <button class="bouquet-replay" id="bouquet-replay" type="button">Yeniden izle ↻</button>
+      </section>
+    </div>
   </body>
 </html>

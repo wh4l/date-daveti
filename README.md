@@ -17,6 +17,8 @@ Masaüstündeki bu klasör kaynak dosyaların bir kopyasıdır. Burada yaptığ�
 - `index.html`: sayfa ve davetiye adımları
 - `style.css`: görünüm ve zarf animasyonu
 - `app.js`: butonlar, konfeti, form ve kayıt gönderimi
+- `bouquet.js`: davetiyedeki düğmeden açılan hareketli ASCII zambak penceresi
+- `bouquet-source.png`: karakterlerle çizilen buketin renk ve şekil kaynağı; ziyaretçiye düz resim olarak gösterilmez
 - `config.js`: Google Apps Script kayıt bağlantısı
 - `favicon.svg`: kalp simgesi
 - `backend/Code.gs`: Google E-Tablo'ya kayıt yapan Apps Script kodu
